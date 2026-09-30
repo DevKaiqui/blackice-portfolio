@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-base: #0a0b12;
+    --primary-neon: #ffa94d;
+    --cyan-cyber: #4fd1ae;
+  }
+
+  body {
+    background-color: #0a0b12;
+    color: #e8e8f0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+.font-display {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.font-headline-lg {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-headline-md {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.font-headline-sm {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-title-code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.font-label-code-lg {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+.font-label-code-sm {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.06em;
+}
+
+.font-body-lg {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-body-md {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-body-sm {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom scrollbar for terminal and code windows */
+.terminal-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.terminal-scroll::-webkit-scrollbar-track {
+  background: #0d0e18;
+}
+.terminal-scroll::-webkit-scrollbar-thumb {
+  background: #2a2b3a;
+  border-radius: 3px;
+}
+.terminal-scroll::-webkit-scrollbar-thumb:hover {
+  background: #ffa94d;
+}
+
+/* Ambient glow utilities */
+.glow-primary {
+  box-shadow: 0 0 24px rgba(255,169,77, 0.25);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 24px rgba(79,209,174, 0.25);
+}

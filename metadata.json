@@ -1,0 +1,6 @@
+{
+  "name": "KZ.SEC - Cyber Threat Intel & Defensive Engineering",
+  "description": "Portfolio e laboratórios de cibersegurança, análise de tráfego Wireshark, pentesting ético, hardening de sistemas e arquitetura defensiva de Kaique Zomer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
