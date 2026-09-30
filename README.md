@@ -1,29 +1,30 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# KZ.SEC — Cyber Threat Intel & Defensive Engineering
 
-# Run and deploy your AI Studio app
+Portfólio pessoal de cibersegurança de Kaique Zomer: laboratórios interativos
+(honeypot, scanner de vulnerabilidades, topologia de rede), credenciais,
+contato com PGP e um sistema real de cadastro/login.
 
-This contains everything you need to run your app locally.
+🔗 **Site publicado:** https://blackice-portfolio.vercel.app
 
-View your app in AI Studio: https://ai.studio/apps/dccbaabf-db5b-4486-962c-378fce1f4f53
+## Tecnologias
 
-## Run Locally
+- **Frontend**: React + TypeScript + Vite + Tailwind CSS
+- **Backend** (`/server`): Node.js + Express + SQLite (`node:sqlite`) + bcrypt + sessão em cookie
 
-**Prerequisites:**  Node.js
+## Rodando localmente
 
+### Frontend
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm install
+npm run dev
+```
 
-## LAB_04 — Cadastro & Login Real (backend)
+Abre em `http://localhost:3000` (ou próxima porta livre).
 
-O laboratório "Cadastro & Login Real" (seção Labs & Projetos) é ligado a um
-backend de verdade em `/server` (Node.js + Express + SQLite + hash de senha
-bcrypt + sessão em cookie). Para usá-lo, rode em outro terminal:
+### Backend (cadastro/login real)
+
+Em outro terminal:
 
 ```bash
 cd server
@@ -32,4 +33,12 @@ cp .env.example .env
 npm run dev
 ```
 
-Detalhes e arquitetura em [server/README.md](server/README.md).
+Sobe em `http://localhost:4000`. Detalhes da arquitetura em
+[server/README.md](server/README.md).
+
+## Deploy
+
+- **Frontend**: Vercel (build automático a partir da raiz do projeto)
+- **Backend**: qualquer host Node (Render, Railway, Fly.io) — ver
+  [server/README.md](server/README.md#deploy-https-em-produção) para as
+  variáveis de ambiente necessárias.
