@@ -133,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#20212e] border border-[#ffb4ab]/40 text-[#ffb4ab] font-label-code-sm text-[11px] uppercase tracking-wider hover:bg-[#ffb4ab] hover:text-[#3f0300] hover:shadow-[0_0_20px_rgba(255,180,171,0.35)] transition-all"
           >
             <span className="material-symbols-outlined text-[14px]">lock_person</span>
-            <span>&gt; LOGIN</span>
+            <span>&gt; CONTA</span>
           </button>
 
           <button
@@ -226,7 +226,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded bg-[#20212e] border border-[#ffb4ab]/40 text-[#ffb4ab] text-xs font-mono font-bold"
           >
             <span className="material-symbols-outlined text-[16px]">lock_person</span>
-            LOGIN
+            CONTA
           </button>
         </div>
       )}

@@ -63,8 +63,9 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   const handleLogout = async () => {
     setLoading(true);
     await authApi.logout();
-    setCurrentUser(null);
-    setLoading(false);
+    // Recarrega para que a tela de bloqueio (AuthGate) reapareça,
+    // já que o portfólio inteiro exige sessão ativa.
+    window.location.reload();
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
