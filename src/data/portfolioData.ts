@@ -8,21 +8,74 @@ export const LOGO_URL =
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="16" fill="#0d0e18"/><path d="M50 18 L78 30 V50 C78 68 50 82 50 82 C50 82 22 68 22 50 V30 Z" fill="none" stroke="#ffa94d" stroke-width="8"/><path d="M40 48 L48 56 L62 42" fill="none" stroke="#4fd1ae" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>`
   );
 
-export const PGP_FINGERPRINT = "9A4F 32B1 C89D 77E2 4001 EF55 BC90 A118 D4E0 F839";
-export const PGP_KEY_ID = "0xD4E0F839";
+// Chave OpenPGP real (RSA-4096), gerada com GnuPG e válida para importação:
+// gpg --show-keys kz-sec-public.asc  →  confirma o fingerprint abaixo.
+export const PGP_FINGERPRINT = "0708 D6D6 3D7B C2B9 BFB7 6E8B AC3B 46FB 53F1 017C";
+export const PGP_KEY_ID = "0x53F1017C";
 
 export const PGP_PUBLIC_KEY_BLOCK = `-----BEGIN PGP PUBLIC KEY BLOCK-----
-Version: OpenPGP.js v5.11.0
-Comment: https://kaiquezomer.sec - Security Operative Verified Key
 
-mQGNBF+9t8EBDAC/3b7zXkG8vQzM9XkZk5qQv1b3h8T8W1s0pA+vLk1...
-[VERIFIED KZ_SEC_IDENTITY // 4096R/D4E0F839]
-Subkey Fingerprint: 9A4F 32B1 C89D 77E2 4001 EF55 BC90 A118 D4E0 F839
-Uid: Kaique Zomer (Cyber Security Analyst) <contato@kaiquezomer.sec>
-Created: 2025-01-15T09:00:00Z
-Expires: 2027-01-15T09:00:00Z
-Cipher: AES-256-GCM | Hash: SHA-512 | Curve: Ed25519/RSA-4096
-=KZ94
+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
+EnCKDdQHlfVm/GW8zc1Xb29uzAlKc2XaQgmn
+=9CqS
 -----END PGP PUBLIC KEY BLOCK-----`;
 
 export const PROFILE_INFO = {
@@ -207,16 +260,16 @@ export const CREDENTIALS_LIST: CredentialItem[] = [
     statusType: "achieved",
     title: "Top 5% Global",
     description: "Resolução consistente de máquinas com foco em Web App Pentesting, Network Security e Privilege Escalation.",
-    focusFooter: "METRIC: 100+ ROOMS & CTFS",
+    focusFooter: "METRIC: 120+ ROOMS & CTFS",
     details: ["Top 5% de mais de 3 milhões de usuários", "Sequência contínua de aprendizagem prática", "Badges em Linux PrivEsc, Web Fundamentals e Red Team"]
   },
   {
     id: "ccna",
-    issuer: "CISCO / NETWORKING",
+    issuer: "AUTOESTUDO // CONTEÚDO CCNA",
     statusText: "[COMPLETO]",
     statusType: "completed",
-    title: "CCNA Foundation",
-    description: "Roteamento avançado, switching enterprise, segurança de portas e projeto de infraestruturas resilientes.",
+    title: "Fundamentos de Redes (CCNA)",
+    description: "Estudo autônomo do conteúdo CCNA: roteamento avançado, switching enterprise, segurança de portas e projeto de infraestruturas resilientes. Não é uma certificação oficial Cisco.",
     focusFooter: "DOMÍNIO: TCP/IP & SWITCHING",
     details: ["IP Connectivity & Subnetting", "VLANs & Trunks 802.1Q", "ACLs & Port Security", "Network Services (DHCP, DNS, NAT)"]
   }

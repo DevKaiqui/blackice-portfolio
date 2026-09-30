@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://blackice-portfolio.c05700766.workers.dev/sitemap.xml

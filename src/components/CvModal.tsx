@@ -37,6 +37,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
             <button
               onClick={onClose}
               className="p-1 rounded text-[#8b8ca3] hover:text-white hover:bg-[#20212e] transition-colors"
+            aria-label="Fechar"
             >
               <span className="material-symbols-outlined text-[20px]">close</span>
             </button>
@@ -65,7 +66,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
               01 // RESUMO PROFISSIONAL
             </h2>
             <p className="leading-relaxed text-[#e8e8f0]">
-              Profissional focado em Segurança Defensiva e Ofensiva (Red & Blue Team), com sólida formação estrutural em Redes de Computadores (pilha TCP/IP) e auditoria de tráfego. Experiência prática na resolução de mais de 100+ desafios em plataformas como TryHackMe (Top 5% Global) e Hack The Box, atuando em análise profunda com Wireshark, hardening de servidores Linux, firewalls pfSense, sistemas IDS/IPS Suricata e automação em Python e Bash.
+              Profissional focado em Segurança Defensiva e Ofensiva (Red & Blue Team), com sólida formação estrutural em Redes de Computadores (pilha TCP/IP) e auditoria de tráfego. Experiência prática na resolução de mais de 120 desafios em plataformas como TryHackMe (Top 5% Global) e Hack The Box, atuando em análise profunda com Wireshark, hardening de servidores Linux, firewalls pfSense, sistemas IDS/IPS Suricata e automação em Python e Bash.
             </p>
           </div>
 
@@ -119,13 +120,13 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
               <li className="flex items-start gap-2">
                 <span className="text-[#ffa94d] font-bold">✓</span>
                 <span>
-                  <strong>TryHackMe Top 5% Global</strong> — Mais de 100+ labs concluídos com foco em Linux PrivEsc e Web Security.
+                  <strong>TryHackMe Top 5% Global</strong> — Mais de 120 labs concluídos com foco em Linux PrivEsc e Web Security.
                 </span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#ffa94d] font-bold">✓</span>
                 <span>
-                  <strong>CCNA Foundation (Cisco / Networking)</strong> — Roteamento avançado, switching enterprise, ACLs e VLANs.
+                  <strong>Fundamentos de Redes, autoestudo do conteúdo CCNA</strong> — Roteamento avançado, switching enterprise, ACLs e VLANs. Não é certificação oficial Cisco.
                 </span>
               </li>
               <li className="flex items-start gap-2">
@@ -146,7 +147,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
 
         {/* Footer */}
         <div className="px-6 py-3 bg-[#14151f] border-t border-[#33344a]/30 flex items-center justify-between font-mono text-[11px] text-[#8b8ca3]">
-          <span>VERIFICADO: KZ_SEC_IDENTITY</span>
+          <span>KZ_SEC_IDENTITY // Kaique Zomer</span>
           <button onClick={onClose} className="text-[#ffa94d] hover:underline">
             [FECHAR PREVIEW]
           </button>

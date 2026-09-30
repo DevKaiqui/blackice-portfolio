@@ -35,7 +35,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     const element = document.createElement('a');
     const file = new Blob([PGP_PUBLIC_KEY_BLOCK], { type: 'text/plain' });
     element.href = URL.createObjectURL(file);
-    element.download = 'kaique-zomer-pubkey-D4E0F839.asc';
+    element.download = 'kaique-zomer-pubkey-53F1017C.asc';
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
@@ -79,8 +79,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
               <p className="font-body-sm text-xs text-[#c6c7d6]">
                 Para envio de reportes sensíveis de segurança, propostas
-                estratégicas ou briefings confidenciais, utilize a chave pública
-                verificada:
+                estratégicas ou briefings confidenciais, utilize esta chave
+                pública OpenPGP (RSA 4096-bit, real e importável):
               </p>
 
               {/* Fingerprint Display Box with One-Click Copy */}
@@ -106,9 +106,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 title="Clique para visualizar o bloco completo"
               >
                 <div>-----BEGIN PGP PUBLIC KEY BLOCK-----</div>
-                <div>mQGNBF+9t8EBDAC/3b7zXkG...[VERIFIED KZ_SEC_IDENTITY]...</div>
-                <div>=KZ94</div>
+                <div>{PGP_PUBLIC_KEY_BLOCK.split('\n')[2]?.slice(0, 48)}...</div>
                 <div>-----END PGP PUBLIC KEY BLOCK-----</div>
+                <div className="text-[#4fd1ae] mt-1">[clique para ver o bloco completo]</div>
               </div>
             </div>
 

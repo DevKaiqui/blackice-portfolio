@@ -9,8 +9,6 @@ interface PgpModalProps {
 export const PgpModal: React.FC<PgpModalProps> = ({ isOpen, onClose }) => {
   const [copiedKey, setCopiedKey] = useState(false);
   const [copiedFingerprint, setCopiedFingerprint] = useState(false);
-  const [messageToEncrypt, setMessageToEncrypt] = useState('');
-  const [encryptedOutput, setEncryptedOutput] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
@@ -30,30 +28,10 @@ export const PgpModal: React.FC<PgpModalProps> = ({ isOpen, onClose }) => {
     const element = document.createElement('a');
     const file = new Blob([PGP_PUBLIC_KEY_BLOCK], { type: 'text/plain' });
     element.href = URL.createObjectURL(file);
-    element.download = 'kaique-zomer-pubkey-D4E0F839.asc';
+    element.download = 'kaique-zomer-pubkey-53F1017C.asc';
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-  };
-
-  const handleSimulateEncryption = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!messageToEncrypt.trim()) return;
-
-    // Simulated PGP armored encryption
-    const b64 = btoa(unescape(encodeURIComponent(messageToEncrypt)));
-    const fakeCipher = [
-      '-----BEGIN PGP MESSAGE-----',
-      'Version: OpenPGP.js v5.11.0',
-      'Comment: Encrypted for Kaique Zomer <0xD4E0F839>',
-      '',
-      `wcBMA+9t8EBDAC/3AQ//${b64.slice(0, 32)}`,
-      `+9xKz${b64.slice(32, 64) || 'aB93dEf4gHi5jK1lM2nO3pQ4rS5tU6vW7xY8z0'}==`,
-      '=8F94',
-      '-----END PGP MESSAGE-----',
-    ].join('\n');
-
-    setEncryptedOutput(fakeCipher);
   };
 
   return (
@@ -68,6 +46,7 @@ export const PgpModal: React.FC<PgpModalProps> = ({ isOpen, onClose }) => {
           <button
             onClick={onClose}
             className="p-1 rounded text-[#8b8ca3] hover:text-white hover:bg-[#20212e] transition-colors"
+            aria-label="Fechar"
           >
             <span className="material-symbols-outlined text-[20px]">close</span>
           </button>
@@ -79,7 +58,7 @@ export const PgpModal: React.FC<PgpModalProps> = ({ isOpen, onClose }) => {
           <div className="p-4 rounded-lg bg-[#0a0b12] border border-[#33344a]/40 space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-xs font-mono text-[#8b8ca3]">
-                KEY FINGERPRINT (VERIFIED)
+                KEY FINGERPRINT (RSA-4096)
               </span>
               <span className="text-[11px] font-mono text-[#4fd1ae]">
                 KEY_ID: {PGP_KEY_ID}
@@ -130,38 +109,20 @@ export const PgpModal: React.FC<PgpModalProps> = ({ isOpen, onClose }) => {
             </pre>
           </div>
 
-          {/* Encryption Sandbox */}
-          <div className="p-4 rounded-lg bg-[#0a0b12] border border-[#4fd1ae]/30 space-y-3">
+          {/* How to use it */}
+          <div className="p-4 rounded-lg bg-[#0a0b12] border border-[#4fd1ae]/30 space-y-2">
             <div className="flex items-center gap-2 text-[#4fd1ae] font-mono text-xs font-semibold">
               <span className="material-symbols-outlined text-[16px]">lock</span>
-              <span>SANDBOX: CRIPTOGRAFAR MENSAGEM COM A CHAVE DE KAIQUE</span>
+              <span>COMO ENVIAR UMA MENSAGEM CRIPTOGRAFADA</span>
             </div>
-            <form onSubmit={handleSimulateEncryption} className="space-y-2">
-              <textarea
-                value={messageToEncrypt}
-                onChange={(e) => setMessageToEncrypt(e.target.value)}
-                placeholder="Escreva sua mensagem confidencial ou relatório de vulnerabilidade aqui..."
-                rows={3}
-                className="w-full p-2.5 rounded bg-[#0d0e18] border border-[#33344a]/50 text-xs text-[#f8f6f2] font-mono focus:outline-none focus:border-[#4fd1ae]"
-              />
-              <button
-                type="submit"
-                className="px-4 py-1.5 rounded bg-[#4fd1ae] text-[#062420] font-mono text-xs font-bold hover:bg-[#a7f3e0] transition-colors"
-              >
-                &gt; Criptografar Payload
-              </button>
-            </form>
-
-            {encryptedOutput && (
-              <div className="pt-2 border-t border-[#33344a]/30 space-y-1">
-                <span className="text-[10px] text-[#ffa94d] font-mono">
-                  [RESULTADO CRIPTOGRAFADO PGP]:
-                </span>
-                <pre className="p-3 rounded bg-[#0d0e18] text-[#4fd1ae] font-mono text-[10px] overflow-x-auto select-all">
-                  {encryptedOutput}
-                </pre>
-              </div>
-            )}
+            <p className="text-[11px] text-[#c6c7d6] leading-relaxed">
+              Importe a chave acima no GnuPG ou em um cliente compatível
+              (ex: <code className="text-[#a7f3e0]">gpg --import</code>) e
+              criptografe sua mensagem para o fingerprint mostrado. Este site
+              é estático e não faz criptografia no navegador — a chave é real
+              e importável, mas a cifragem deve ser feita no seu próprio
+              cliente PGP.
+            </p>
           </div>
         </div>
 

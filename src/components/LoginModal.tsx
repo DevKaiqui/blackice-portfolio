@@ -129,6 +129,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
           <button
             onClick={onClose}
             className="p-1 rounded text-[#8b8ca3] hover:text-white hover:bg-[#20212e] transition-colors"
+            aria-label="Fechar"
           >
             <span className="material-symbols-outlined text-[20px]">close</span>
           </button>

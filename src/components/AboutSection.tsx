@@ -18,7 +18,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
       icon: 'flag',
       title: 'Laboratórios & CTFs',
       description:
-        'Mais de 100+ desafios resolvidos no TryHackMe & Hack The Box, com foco em privilege escalation (Linux/Windows) e exploração controlada de serviços web.',
+        'Mais de 120 desafios resolvidos no TryHackMe & Hack The Box, com foco em privilege escalation (Linux/Windows) e exploração controlada de serviços web.',
       footerLabel: 'PROGRESSÃO',
       footerValue: '> 100 BOXES',
       color: 'neon',
