@@ -19,11 +19,16 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenLab }) =
               // 03. LABS_E_PROJETOS
             </span>
             <h2 className="font-headline-lg text-2xl sm:text-3xl lg:text-4xl text-[#f8f6f2] tracking-tight font-bold">
-              Arquiteturas Desenvolvidas & Testes Reais
+              Laboratórios Interativos de Segurança
             </h2>
+            <p className="font-body-sm text-xs text-[#8b8ca3] max-w-2xl mt-1">
+              Demonstrações interativas de conceitos e arquiteturas que estudo e
+              pratico. Código-fonte ainda não publicado publicamente — disponível
+              mediante solicitação.
+            </p>
           </div>
           <span className="font-label-code-sm text-xs text-[#8b8ca3]">
-            ENGENHARIA_DEFENSIVA // COMPROVADA
+            LABS_DEMONSTRATIVOS // INTERATIVOS
           </span>
         </div>
 
@@ -163,7 +168,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenLab }) =
                   onClick={() => onOpenLab('honeypot')}
                   className="inline-flex items-center gap-1 font-label-code-sm text-xs text-[#ffa94d] hover:text-[#f8f6f2] transition-colors text-left"
                 >
-                  <span>&gt; REQUISITAR BLUEPRINT / CODE</span>
+                  <span>&gt; ABRIR LAB INTERATIVO (DEMO)</span>
                   <span className="material-symbols-outlined text-[16px]">
                     arrow_forward
                   </span>
@@ -229,7 +234,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenLab }) =
                   onClick={() => onOpenLab('scanner')}
                   className="inline-flex items-center gap-1 font-label-code-sm text-xs text-[#4fd1ae] hover:text-[#f8f6f2] transition-colors text-left"
                 >
-                  <span>&gt; VER DEMO &amp; REPOSITÓRIO</span>
+                  <span>&gt; ABRIR LAB INTERATIVO (DEMO)</span>
                   <span className="material-symbols-outlined text-[16px]">
                     arrow_forward
                   </span>
@@ -311,7 +316,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenLab }) =
                   onClick={() => onOpenLab('topology')}
                   className="inline-flex items-center gap-1 font-label-code-sm text-xs text-[#ffa94d] hover:text-[#f8f6f2] transition-colors text-left"
                 >
-                  <span>&gt; DOCUMENTAÇÃO DE TOPOLOGIA</span>
+                  <span>&gt; VER SIMULAÇÃO DE TOPOLOGIA</span>
                   <span className="material-symbols-outlined text-[16px]">
                     arrow_forward
                   </span>

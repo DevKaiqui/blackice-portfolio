@@ -127,7 +127,7 @@ services:
                 LAB_01 // Network Threat Hunter & Honeypot
               </span>
               <span className="text-[10px] text-[#ffa94d] block font-mono">
-                TELEMETRIA EM TEMPO REAL & BLUEPRINT
+                TELEMETRIA SIMULADA (DADOS DE EXEMPLO) & BLUEPRINT
               </span>
             </div>
           </div>
