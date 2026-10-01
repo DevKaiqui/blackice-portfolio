@@ -15,7 +15,3 @@ services:
         generateValue: true
       - key: CORS_ORIGIN
         sync: false
-    disk:
-      name: kz-sec-data
-      mountPath: /opt/render/project/src/server/data
-      sizeGB: 1

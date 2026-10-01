@@ -86,12 +86,15 @@ como um Blueprint do Render:
 3. Antes de confirmar, preencha a variável `CORS_ORIGIN` com a URL pública
    do frontend (ex.: `https://blackice-portfolio.c05700766.workers.dev`).
    `SESSION_SECRET` é gerado automaticamente pelo Render.
-4. **Atenção ao plano gratuito**: o Render free tier **não mantém disco
-   persistente** — o volume declarado em `render.yaml` só funciona em
-   planos pagos (Starter ou acima). No free tier, o arquivo `data/app.db`
-   é apagado a cada deploy/restart e todas as contas cadastradas somem.
-   Se isso for inaceitável, migre para um plano com disco antes de divulgar
-   o site, ou troque para Fly.io (tem volume persistente no free tier).
+4. **Atenção ao plano gratuito**: o Render free tier **não suporta disco
+   persistente** (o próprio Blueprint recusa o deploy se você declarar um
+   `disk:` com `plan: free` — por isso o `render.yaml` não declara disco).
+   Isso significa que o arquivo `data/app.db` é apagado a cada
+   deploy/restart e todas as contas cadastradas somem. Se isso for
+   inaceitável, mude `plan: free` para `starter` (ou superior) em
+   `render.yaml` e adicione um bloco `disk:` apontando pra
+   `server/data`, ou troque para Fly.io (tem volume persistente no free
+   tier).
 5. Depois do primeiro deploy, copie a URL pública que o Render atribuiu
    (ex.: `https://kz-sec-auth-server.onrender.com`) e use-a como
    `VITE_API_URL` no build do frontend (passo 3 acima).
