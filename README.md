@@ -4,7 +4,7 @@ Portfólio pessoal de cibersegurança de Kaique Zomer: laboratórios interativos
 (honeypot, scanner de vulnerabilidades, topologia de rede), credenciais,
 contato com PGP e um sistema real de cadastro/login.
 
-🔗 **Site publicado:** https://blackice-portfolio.vercel.app
+🔗 **Site publicado:** https://blackice-portfolio.c05700766.workers.dev
 
 ## Tecnologias
 
@@ -38,7 +38,11 @@ Sobe em `http://localhost:4000`. Detalhes da arquitetura em
 
 ## Deploy
 
-- **Frontend**: Vercel (build automático a partir da raiz do projeto)
-- **Backend**: qualquer host Node (Render, Railway, Fly.io) — ver
-  [server/README.md](server/README.md#deploy-https-em-produção) para as
-  variáveis de ambiente necessárias.
+- **Frontend**: Cloudflare Workers, publicado manualmente a partir do
+  `dist/` gerado por `npm run build`. **Importante:** `VITE_API_URL` precisa
+  estar definido (no `.env` ou na variável de ambiente do build) *antes* do
+  build, porque o Vite embute esse valor no JS final — trocar a variável
+  depois exige rebuildar e republicar o Worker.
+- **Backend**: Render, usando o Blueprint em [`render.yaml`](render.yaml) —
+  ver [server/README.md](server/README.md#deploy-no-render-passo-a-passo)
+  para o passo a passo e as variáveis de ambiente necessárias.

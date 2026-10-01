@@ -74,6 +74,28 @@ portfólio com o login funcional de verdade:
 4. Publique o frontend em qualquer host com HTTPS automático (Vercel,
    Netlify, GitHub Pages com domínio próprio, etc.).
 
+### Deploy no Render (passo a passo)
+
+O arquivo `render.yaml` na raiz do repositório já descreve este serviço
+como um Blueprint do Render:
+
+1. No [dashboard do Render](https://dashboard.render.com), **New** →
+   **Blueprint**, aponte para este repositório no GitHub.
+2. O Render lê o `render.yaml` e propõe o serviço `kz-sec-auth-server`
+   (`rootDir: server`, build `npm install`, start `npm start`).
+3. Antes de confirmar, preencha a variável `CORS_ORIGIN` com a URL pública
+   do frontend (ex.: `https://blackice-portfolio.c05700766.workers.dev`).
+   `SESSION_SECRET` é gerado automaticamente pelo Render.
+4. **Atenção ao plano gratuito**: o Render free tier **não mantém disco
+   persistente** — o volume declarado em `render.yaml` só funciona em
+   planos pagos (Starter ou acima). No free tier, o arquivo `data/app.db`
+   é apagado a cada deploy/restart e todas as contas cadastradas somem.
+   Se isso for inaceitável, migre para um plano com disco antes de divulgar
+   o site, ou troque para Fly.io (tem volume persistente no free tier).
+5. Depois do primeiro deploy, copie a URL pública que o Render atribuiu
+   (ex.: `https://kz-sec-auth-server.onrender.com`) e use-a como
+   `VITE_API_URL` no build do frontend (passo 3 acima).
+
 Com `NODE_ENV=production`, o servidor passa a: redirecionar HTTP→HTTPS
 automaticamente, enviar `Strict-Transport-Security` e usar cookies
 `Secure; SameSite=None` (exigido para funcionar entre domínios diferentes).

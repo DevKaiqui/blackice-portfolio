@@ -28,6 +28,8 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   const [lockoutRemaining, setLockoutRemaining] = useState(0);
   const [currentUser, setCurrentUser] = useState<AuthUser | null>(null);
   const [checkingSession, setCheckingSession] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
     if (lockoutRemaining <= 0) return;
@@ -46,6 +48,8 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     setErrorMsg(null);
     setOkMsg(null);
     setCheckingSession(true);
+    setShowPassword(false);
+    setShowConfirmPassword(false);
 
     authApi.me().then((res) => {
       setCurrentUser(res.ok ? res.data ?? null : null);
@@ -83,7 +87,6 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
     if (mode === 'register' && password !== confirmPassword) {
       setErrorMsg('As senhas não coincidem.');
-      resetCaptcha();
       return;
     }
 
@@ -93,7 +96,6 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         ? await authApi.login({ username, password })
         : await authApi.register({ username, email, password });
     setLoading(false);
-    resetCaptcha();
 
     if (!result.ok) {
       setErrorMsg(result.error ?? 'Erro inesperado.');
@@ -234,15 +236,27 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                     <label className="font-label-code-sm text-[11px] text-[#8b8ca3]">
                       SENHA
                     </label>
-                    <input
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      disabled={lockoutRemaining > 0 || loading}
-                      className="bg-[#0d0e18] border border-[#33344a]/50 rounded px-3 py-2 font-mono text-xs text-[#e8e8f0] focus:outline-none focus:border-[#ffb4ab]/60 disabled:opacity-50"
-                      placeholder="mínimo 8 caracteres"
-                      autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
-                    />
+                    <div className="relative">
+                      <input
+                        type={showPassword ? 'text' : 'password'}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        disabled={lockoutRemaining > 0 || loading}
+                        className="w-full bg-[#0d0e18] border border-[#33344a]/50 rounded px-3 py-2 pr-9 font-mono text-xs text-[#e8e8f0] focus:outline-none focus:border-[#ffb4ab]/60 disabled:opacity-50"
+                        placeholder="mínimo 8 caracteres"
+                        autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword((v) => !v)}
+                        aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-[#8b8ca3] hover:text-[#e8e8f0] focus:outline-none focus:text-[#ffb4ab]"
+                      >
+                        <span className="material-symbols-outlined text-[18px] leading-none">
+                          {showPassword ? 'visibility_off' : 'visibility'}
+                        </span>
+                      </button>
+                    </div>
                   </div>
 
                   {mode === 'register' && (
@@ -250,15 +264,27 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                       <label className="font-label-code-sm text-[11px] text-[#8b8ca3]">
                         CONFIRMAR SENHA
                       </label>
-                      <input
-                        type="password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        disabled={lockoutRemaining > 0 || loading}
-                        className="bg-[#0d0e18] border border-[#33344a]/50 rounded px-3 py-2 font-mono text-xs text-[#e8e8f0] focus:outline-none focus:border-[#ffb4ab]/60 disabled:opacity-50"
-                        placeholder="repita a senha"
-                        autoComplete="new-password"
-                      />
+                      <div className="relative">
+                        <input
+                          type={showConfirmPassword ? 'text' : 'password'}
+                          value={confirmPassword}
+                          onChange={(e) => setConfirmPassword(e.target.value)}
+                          disabled={lockoutRemaining > 0 || loading}
+                          className="w-full bg-[#0d0e18] border border-[#33344a]/50 rounded px-3 py-2 pr-9 font-mono text-xs text-[#e8e8f0] focus:outline-none focus:border-[#ffb4ab]/60 disabled:opacity-50"
+                          placeholder="repita a senha"
+                          autoComplete="new-password"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShowConfirmPassword((v) => !v)}
+                          aria-label={showConfirmPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 text-[#8b8ca3] hover:text-[#e8e8f0] focus:outline-none focus:text-[#ffb4ab]"
+                        >
+                          <span className="material-symbols-outlined text-[18px] leading-none">
+                            {showConfirmPassword ? 'visibility_off' : 'visibility'}
+                          </span>
+                        </button>
+                      </div>
                     </div>
                   )}
 

@@ -27,6 +27,8 @@ export const AuthGate: React.FC<AuthGateProps> = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [lockoutRemaining, setLockoutRemaining] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
     authApi.me().then((res) => {
@@ -58,7 +60,6 @@ export const AuthGate: React.FC<AuthGateProps> = ({ children }) => {
     }
     if (mode === 'register' && password !== confirmPassword) {
       setErrorMsg('As senhas não coincidem.');
-      resetCaptcha();
       return;
     }
 
@@ -68,7 +69,6 @@ export const AuthGate: React.FC<AuthGateProps> = ({ children }) => {
         ? await authApi.login({ username, password })
         : await authApi.register({ username, email, password });
     setLoading(false);
-    resetCaptcha();
 
     if (!result.ok) {
       setErrorMsg(result.error ?? 'Erro inesperado.');
@@ -169,29 +169,53 @@ export const AuthGate: React.FC<AuthGateProps> = ({ children }) => {
 
             <div className="flex flex-col gap-1">
               <label className="font-mono text-[11px] text-[#8b8ca3]">SENHA</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                disabled={lockoutRemaining > 0 || loading}
-                className="bg-[#0a0b12] border border-[#33344a]/50 rounded px-3 py-2 font-mono text-xs text-[#e8e8f0] focus:outline-none focus:border-[#ffa94d]/60 disabled:opacity-50"
-                placeholder="mínimo 8 caracteres"
-                autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  disabled={lockoutRemaining > 0 || loading}
+                  className="w-full bg-[#0a0b12] border border-[#33344a]/50 rounded px-3 py-2 pr-9 font-mono text-xs text-[#e8e8f0] focus:outline-none focus:border-[#ffa94d]/60 disabled:opacity-50"
+                  placeholder="mínimo 8 caracteres"
+                  autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((v) => !v)}
+                  aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-[#8b8ca3] hover:text-[#e8e8f0] focus:outline-none focus:text-[#ffa94d]"
+                >
+                  <span className="material-symbols-outlined text-[18px] leading-none">
+                    {showPassword ? 'visibility_off' : 'visibility'}
+                  </span>
+                </button>
+              </div>
             </div>
 
             {mode === 'register' && (
               <div className="flex flex-col gap-1">
                 <label className="font-mono text-[11px] text-[#8b8ca3]">CONFIRMAR SENHA</label>
-                <input
-                  type="password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  disabled={lockoutRemaining > 0 || loading}
-                  className="bg-[#0a0b12] border border-[#33344a]/50 rounded px-3 py-2 font-mono text-xs text-[#e8e8f0] focus:outline-none focus:border-[#ffa94d]/60 disabled:opacity-50"
-                  placeholder="repita a senha"
-                  autoComplete="new-password"
-                />
+                <div className="relative">
+                  <input
+                    type={showConfirmPassword ? 'text' : 'password'}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    disabled={lockoutRemaining > 0 || loading}
+                    className="w-full bg-[#0a0b12] border border-[#33344a]/50 rounded px-3 py-2 pr-9 font-mono text-xs text-[#e8e8f0] focus:outline-none focus:border-[#ffa94d]/60 disabled:opacity-50"
+                    placeholder="repita a senha"
+                    autoComplete="new-password"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword((v) => !v)}
+                    aria-label={showConfirmPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 text-[#8b8ca3] hover:text-[#e8e8f0] focus:outline-none focus:text-[#ffa94d]"
+                  >
+                    <span className="material-symbols-outlined text-[18px] leading-none">
+                      {showConfirmPassword ? 'visibility_off' : 'visibility'}
+                    </span>
+                  </button>
+                </div>
               </div>
             )}
 

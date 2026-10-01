@@ -42,12 +42,14 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<ApiR
     }
 
     return { ok: true, status: res.status, data: body as T };
-  } catch {
+  } catch (err) {
+    // Detalhe técnico só no console; o visitante não precisa saber que
+    // existe um "/server" ou como rodar o backend localmente.
+    console.error(`[authApi] falha ao chamar ${API_URL}${path}:`, err);
     return {
       ok: false,
       status: 0,
-      error:
-        'Não foi possível conectar ao backend (servidor offline?). Rode "npm run dev" dentro da pasta /server.',
+      error: 'Não foi possível criar a conta agora. Tente novamente em instantes.',
     };
   }
 }
