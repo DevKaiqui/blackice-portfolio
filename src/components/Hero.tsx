@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { InteractiveTerminal } from './InteractiveTerminal';
+import { SecurityShield } from './SecurityShield';
 import { PROFILE_INFO } from '../data/portfolioData';
 
 interface HeroProps {
@@ -57,6 +58,9 @@ export const Hero: React.FC<HeroProps> = ({
       {/* Glow gradients */}
       <div className="absolute -top-24 left-1/4 w-96 h-96 bg-[#ffa94d]/10 rounded-full blur-[140px] pointer-events-none"></div>
       <div className="absolute top-1/2 right-12 w-80 h-80 bg-[#4fd1ae]/10 rounded-full blur-[160px] pointer-events-none"></div>
+
+      {/* Animated security shield watermark */}
+      <SecurityShield className="hidden lg:block absolute top-1/2 right-0 -translate-y-1/2 w-[420px] opacity-[0.14] z-0" />
 
       <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
         {/* Hero Left Column: Identity & Directives */}

@@ -84,3 +84,79 @@
 .glow-secondary {
   box-shadow: 0 0 24px rgba(79,209,174, 0.25);
 }
+
+/* HackerMascot animations (AuthGate) */
+@keyframes mascot-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.mascot-float {
+  animation: mascot-float 4s ease-in-out infinite;
+}
+
+@keyframes mascot-eye-glow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.45; }
+}
+.mascot-eye-glow {
+  animation: mascot-eye-glow 2.4s ease-in-out infinite;
+}
+
+@keyframes mascot-type {
+  0%, 100% { opacity: 0; }
+  5%, 28% { opacity: 1; }
+  33% { opacity: 0; }
+}
+.mascot-type {
+  opacity: 0;
+  animation: mascot-type 5.4s ease-in-out infinite;
+}
+
+/* SecurityShield animations (Hero) */
+@keyframes shield-pulse {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(255,169,77,0.25)); transform: scale(1); }
+  50% { filter: drop-shadow(0 0 22px rgba(79,209,174,0.35)); transform: scale(1.015); }
+}
+.shield-pulse {
+  transform-origin: 200px 220px;
+  animation: shield-pulse 4.5s ease-in-out infinite;
+}
+
+@keyframes shield-eye-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.shield-eye-glow {
+  animation: shield-eye-glow 2s ease-in-out infinite;
+}
+
+@keyframes shield-ring-expand {
+  0% { r: 90px; opacity: 0.25; }
+  100% { r: 190px; opacity: 0; }
+}
+.shield-ring {
+  transform-origin: 200px 220px;
+  animation: shield-ring-expand 3.9s ease-out infinite;
+}
+
+@keyframes shield-scan-sweep {
+  0% { transform: translateY(-140px); opacity: 0; }
+  15% { opacity: 0.6; }
+  85% { opacity: 0.6; }
+  100% { transform: translateY(140px); opacity: 0; }
+}
+.shield-scan {
+  animation: shield-scan-sweep 3.2s ease-in-out infinite;
+}
+
+@keyframes shield-bit-float {
+  0%, 100% { opacity: 0; transform: translateY(0); }
+  15%, 75% { opacity: 0.8; }
+  100% { transform: translateY(-24px); }
+}
+.shield-bit {
+  opacity: 0;
+  animation-name: shield-bit-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}

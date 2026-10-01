@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { authApi, type AuthUser } from '../lib/authApi';
+import { HackerMascot } from './HackerMascot';
 
 type Mode = 'login' | 'register';
 
@@ -95,7 +96,9 @@ export const AuthGate: React.FC<AuthGateProps> = ({ children }) => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0a0b12] px-4 py-10">
-      <div className="w-full max-w-md rounded-xl bg-[#0d0e18] border border-[#ffa94d]/40 shadow-[0_20px_50px_rgba(0,0,0,0.9),0_0_30px_rgba(255,169,77,0.12)] overflow-hidden">
+      <div className="w-full max-w-4xl flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+        <HackerMascot className="hidden md:block flex-shrink-0" eyesOpen={showPassword} />
+        <div className="w-full max-w-md rounded-xl bg-[#0d0e18] border border-[#ffa94d]/40 shadow-[0_20px_50px_rgba(0,0,0,0.9),0_0_30px_rgba(255,169,77,0.12)] overflow-hidden">
         <div className="px-6 py-5 bg-[#14151f] border-b border-[#33344a]/40 flex items-center gap-2">
           <span className="material-symbols-outlined text-[#ffa94d] text-[22px]">lock</span>
           <div>
@@ -254,6 +257,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ children }) => {
               {errorMsg}
             </div>
           )}
+        </div>
         </div>
       </div>
     </div>
